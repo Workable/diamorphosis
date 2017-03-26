@@ -2,9 +2,15 @@
   "name": "env2conf",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
   "author": "",
-  "license": "ISC",
+  "keywords": [
+    "config",
+    "json",
+    "env",
+    "NODE_ENV",
+    "twelve factor"
+  ],
+  "license": "MIT",
   "dependencies": {
     "deep-extend": "^0.4.1",
     "dotenv": "^2.0.0"
@@ -18,7 +24,7 @@
     "node": "6.3.x"
   },
   "scripts": {
-    "test": "istanbul test ./node_modules/.bin/_mocha test/*  -- -R spec",
-    "posttest": "istanbul check-coverage --statements 85 --branches 70 --functions 100 --lines 90"
+    "test": "mocha --require should --reporter spec",
+    "test-cov": "node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require should"
   }
 }
