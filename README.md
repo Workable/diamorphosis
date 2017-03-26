@@ -1,6 +1,6 @@
 # env2Conf
 
-Use a JSON file to configure your application for different environments (NODE_ENV).
+Use JSON file(s) to configure your application for different environments (NODE_ENV).
 Overwrite the config values using ENV vars.
 Supports defaults. Supports nested values.
 
