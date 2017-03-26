@@ -80,9 +80,9 @@ module.exports =
 
 ```
 // file: config.js
-const Env2conf = require('env2conf');
-const config = require('./configValues.js')
-const env2conf = new Env2conf(config);
+const Env2conf = require('../env2conf');
+const configValues = require('./configValues.js')
+const env2conf = new Env2conf({config: configValues});
 module.exports = env2conf.getConfig();
 ```
 
