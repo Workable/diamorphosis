@@ -92,7 +92,7 @@ const config = require('./config');
 console.log(var_one:', config.var_one);
 console.log(var_two:', config.nested_example.varTwo);
 
-// Env vars can overwrite the config values. The appp will need a restart to load the new values:
+// Env vars can overwrite the config values. The app will need a restart to load the new values:
 // export VAR_ONE="some other value for var one"
 // export NESTED_EXAMPLE_VAR_TWO="some other value for var two"
 ```
