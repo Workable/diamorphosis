@@ -1,6 +1,6 @@
 module.exports =
 {
-    description: 'should throw on undefined env',
+    description: 'should load the default',
     input: {
         config: {
             development: {
@@ -18,8 +18,8 @@ module.exports =
         }
     },
     expected: {
-        error: {
-            msg: 'env var NODE_ENV is not defined'
+        config: {
+            testDefault: 'testDefaultOk'
         }
     }
 };

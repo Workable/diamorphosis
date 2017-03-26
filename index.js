@@ -39,9 +39,6 @@ const replaceConfigFromEnv = (config, path = '') => {
 module.exports = class {
     constructor({config = {}, options: {excludeEnvLoad = {}}} = {}) {
         const env = process.env.NODE_ENV;
-        if (!env) {
-            throw new Error('env var NODE_ENV is not defined');
-        }
         const configWithNoFunctions = JSON.parse(JSON.stringify(config));
         Object.assign(this, {
             configResult: null,
@@ -57,7 +54,9 @@ module.exports = class {
         if (shouldLoadEnv(this.excludeEnvLoad)) {
             dotenv.load();
         }
-        this.configResult = replaceConfigFromEnv(deepExtend({}, this.config.default, this.config[this.env]));
+        this.configResult = this.env ?
+            replaceConfigFromEnv(deepExtend({}, this.config.default, this.config[this.env])) :
+            replaceConfigFromEnv(deepExtend({}, this.config.default));
         return this.configResult;
     }
 };
