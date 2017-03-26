@@ -88,11 +88,11 @@ module.exports = env2conf.getConfig();
 ```
 
 ```
-// file: config.js
-const config = require('./myFile');
+// file: myFile.js
+const config = require('./config');
 console.log(var_one:', config.var_one);
 console.log(var_two:', config.nested_example.varTwo);
-//
+
 // you can overwrte config values using system env vars:
 // export VAR_ONE="some other value for var one"
 // export NESTED_EXAMPLE_VAR_TWO="some other value for var two"
