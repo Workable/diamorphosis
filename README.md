@@ -1,7 +1,6 @@
 # env2Conf
 
-Use JSON file(s) to configure your application for different environments (NODE_ENV).
-Overwrite the config values using ENV vars.
+Use JSON file(s), and/or ENV vars to configure your application for different environments (NODE_ENV).
 Supports defaults. Supports nested values.
 
 ## Installation
@@ -50,7 +49,7 @@ For seperate files per env:
 }
 ```
 
-- Overwrite your application's config using ENV variables. Supports scalar and array values.
+- Overwrite your application's config by using ENV variables and restarting the app. Supports scalar and array values.
 
 ```
 export MY_VAR_A=someScalarValue
@@ -93,7 +92,7 @@ const config = require('./config');
 console.log(var_one:', config.var_one);
 console.log(var_two:', config.nested_example.varTwo);
 
-// you can overwrte config values using system env vars:
+// Env vars can overwrite the config values. The appp will need a restart to load the new values:
 // export VAR_ONE="some other value for var one"
 // export NESTED_EXAMPLE_VAR_TWO="some other value for var two"
 ```
