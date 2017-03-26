@@ -1,4 +1,4 @@
-const ConfigApp = require('./../src/index');
+const ConfigApp = require('../index');
 const should = require('should');
 const fs = require('fs');
 
