@@ -1,6 +1,9 @@
 const deepExtend = require('deep-extend');
 const dotenv = require('dotenv');
 
+const seperator = '_';
+const delimiter = ',';
+
 const shouldLoadEnv =  exclude => !exclude || typeof exclude !== 'function' || !exclude();
 
 const getEnvValue = (path, key) => process.env[`${path}${key}`.toUpperCase()];
@@ -20,13 +23,15 @@ const replace = (config, path, key) => {
         case 'string':
             return config[key] = envValue;
     }
-    config[key] = envValue.split(','); // todo
+    config[key] = envValue.split(delimiter);
 };
 
 const replaceConfigFromEnv = (config, path = '') => {
     Object.keys(config).forEach(key => {
         const current = config[key];
-        isObject(current) ? replaceConfigFromEnv(current, `${path}${key}_`) : replace(config, path, key);
+        isObject(current) ?
+            replaceConfigFromEnv(current, `${path}${key}${seperator}`) :
+            replace(config, path, key);
     });
     return config;
 };
@@ -38,7 +43,12 @@ module.exports = class {
             throw new Error('env var NODE_ENV is not defined');
         }
         const configWithNoFunctions = JSON.parse(JSON.stringify(config));
-        Object.assign(this, {configResult: null, config: configWithNoFunctions, env, excludeEnvLoad});
+        Object.assign(this, {
+            configResult: null,
+            config: configWithNoFunctions,
+            env,
+            excludeEnvLoad
+        });
     }
     getConfig() {
         if (this.configResult) {
