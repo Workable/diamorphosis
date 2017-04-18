@@ -1,10 +1,10 @@
 module.exports =
 {
-    description: 'should exclude loading the env if the excludeLoadEnv callback evaluates to true',
+    description: 'should use aliases',
     input: {
         config: {
             development: {
-                test: 1,
+                test: 'test-ok',
                 nested: {
                     nestedtest1: 'one'
                 }
@@ -16,14 +16,21 @@ module.exports =
 
             }
         },
-        nodeEnv: 'development',
         options: {
-            excludeEnvLoad: ['development']
-        }
+            aliases: {
+                TEST_B: ['test']
+            }
+        },
+        env: {
+            TEST: 'test-ok',
+            TEST_B: 'test-b-ok',
+            TEST_C: 'test-c-ok'
+        },
+        nodeEnv: 'development'
     },
     expected: {
         config: {
-            test: 1,
+            test: 'test-b-ok',
             nested: {
                 nestedtest1: 'one'
             },
@@ -31,3 +38,5 @@ module.exports =
         }
     }
 };
+
+

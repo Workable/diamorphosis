@@ -1,62 +1,143 @@
 const deepExtend = require('deep-extend');
 const dotenv = require('dotenv');
 
-const seperator = '_';
-const delimiter = ',';
+const envPathDelimiter = '_';
+const arrayStringDelimiter = ',';
 
-const shouldLoadEnv =  exclude => !exclude || typeof exclude !== 'function' || !exclude();
+const isNullOrUndefined = (val) => val === null || typeof val === 'undefined';
+
+const shouldLoadEnv =  exclude => !exclude || exclude.reduce((acc, val) => acc && process.NODE_ENV === val, true);
 
 const getEnvValue = (path, key) => process.env[`${path}${key}`.toUpperCase()];
 
 const isObject = val => val && Object === val.constructor;
 
+const castValue = (value, type) => {
+    switch(type) {
+        case 'number':
+            return Number(value);
+        case 'boolean':
+            return value === 'true';
+        case 'string':
+            return value;
+    }
+    return value.split(arrayStringDelimiter);
+};
+
 const replace = (config, path, key) => {
     const envValue = getEnvValue(path, key);
-    if (envValue === null || typeof envValue === 'undefined') {
+
+    if (isNullOrUndefined(envValue)) {
         return;
     }
-    switch(typeof config[key]) {
-        case 'number':
-            return config[key] = Number(envValue);
-        case 'boolean':
-            return config[key] = envValue === 'true';
-        case 'string':
-            return config[key] = envValue;
-    }
-    config[key] = envValue.split(delimiter);
+
+    config[key] = castValue(envValue, typeof config[key]);
+
 };
 
 const replaceConfigFromEnv = (config, path = '') => {
     Object.keys(config).forEach(key => {
-        const current = config[key];
-        isObject(current) ?
-            replaceConfigFromEnv(current, `${path}${key}${seperator}`) :
+        const currentConfigValue = config[key];
+
+        isObject(currentConfigValue) ?
+            replaceConfigFromEnv(currentConfigValue, `${path}${key}${envPathDelimiter}`) :
             replace(config, path, key);
     });
+
     return config;
 };
 
+const loadAliases = (aliases = {}, config) => {
+    Object.keys(process.env).forEach(key => {
+        const currentAlias = aliases[key];
+
+        if (!currentAlias) {
+            return;
+        }
+
+        const len = currentAlias.length;
+
+        let reference = config;
+
+        for(let i = 0; i < len; i++) {
+            const path = currentAlias[i];
+
+            if (i === len - 1) {
+
+                const envValue = process.env[key];
+                if (!reference) {
+                    break;
+                }
+                reference[path] = castValue(envValue, typeof reference[path]);
+
+            } else {
+
+                reference = config[path];
+
+                if (!reference) {
+                    break;
+                }
+
+            }
+
+        }
+    });
+};
+
 module.exports = class {
-    constructor({config = {}, options: {excludeEnvLoad = {}}} = {}) {
-        const env = process.env.NODE_ENV;
-        const configWithNoFunctions = JSON.parse(JSON.stringify(config));
+    constructor(
+        {
+            config = {},
+            options: {
+                excludeEnvLoad = [],
+                aliases = {}
+                }
+            } = {}
+    ) {
+
+        const nodeEnv = process.env.NODE_ENV;
+
+        const configClone = deepExtend({}, config);
+
         Object.assign(this, {
-            configResult: null,
-            config: configWithNoFunctions,
-            env,
-            excludeEnvLoad
+            computedConfig: null,
+            rawConfig: configClone,
+            nodeEnv,
+            excludeEnvLoad,
+            aliases
         });
     }
+
+    getCachedConfig () {
+        return this.computedConfig;
+    }
+
     getConfig() {
-        if (this.configResult) {
-            return this.configResult;
+        const cachedConfig = this.getCachedConfig();
+        if (cachedConfig) {
+            return cachedConfig;
         }
-        if (shouldLoadEnv(this.excludeEnvLoad)) {
+
+        const loadEnv = shouldLoadEnv(this.excludeEnvLoad);
+
+        if (loadEnv) {
             dotenv.load();
         }
-        this.configResult = this.env ?
-            replaceConfigFromEnv(deepExtend({}, this.config.default, this.config[this.env])) :
-            replaceConfigFromEnv(deepExtend({}, this.config.default));
-        return this.configResult;
+
+        const currentEnvConfig = this.nodeEnv ? this.rawConfig[this.nodeEnv] : {};
+
+        const { defaults } = this.rawConfig;
+
+        const currentEnvConfigWithDefaults = deepExtend({}, defaults, currentEnvConfig);
+
+        this.computedConfig = replaceConfigFromEnv(currentEnvConfigWithDefaults);
+
+        if (loadEnv) {
+            loadAliases(this.aliases, this.computedConfig);
+        }
+
+        return this.computedConfig;
+
     }
+
 };

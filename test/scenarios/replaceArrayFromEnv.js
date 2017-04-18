@@ -25,8 +25,7 @@ module.exports =
                 nestedtest1: ['1', '2', '3', '4']
             }
         }
-    },
-    only: true
+    }
 };
 
 

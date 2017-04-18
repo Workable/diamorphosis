@@ -1,6 +1,6 @@
 module.exports =
 {
-    description: 'should load the default',
+    description: 'should load the defaults',
     input: {
         config: {
             development: {
@@ -9,7 +9,7 @@ module.exports =
                     nestedtest1: 'one'
                 }
             },
-            default: {
+            defaults: {
                 testDefault: 'testDefaultOk'
             },
             production: {

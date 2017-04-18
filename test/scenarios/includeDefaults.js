@@ -9,7 +9,7 @@ module.exports =
                     nestedtest1: 'one'
                 }
             },
-            default: {
+            defaults: {
                 testDefault: 'testDefaultOk'
             },
             production: {

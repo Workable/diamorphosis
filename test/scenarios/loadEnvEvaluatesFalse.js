@@ -1,6 +1,6 @@
 module.exports =
 {
-    description: 'should exclude loading the env if the excludeLoadEnv callback evaluates to true',
+    description: 'should exclude loading the env if the excludeLoadEnv is null',
         input: {
     config: {
         development: {
@@ -9,7 +9,7 @@ module.exports =
                 nestedtest1: 'one'
             }
         },
-    default: {
+    defaults: {
             testDefault: 'testDefaultOk'
         },
         production: {
@@ -18,7 +18,7 @@ module.exports =
     },
     nodeEnv: 'development',
         options: {
-        excludeEnvLoad: () => false
+        excludeEnvLoad: null
     }
 },
     expected: {

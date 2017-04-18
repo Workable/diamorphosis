@@ -56,6 +56,6 @@ function runSceanrio(scenario) {
 }
 
 describe('spec', () =>
-        scenarios.forEach(scenario =>
-                it(scenario.description, () =>
-                        runSceanrio(scenario)) ) );
+    scenarios.forEach(scenario =>
+        it(scenario.description, () =>
+            runSceanrio(scenario)) ) );
