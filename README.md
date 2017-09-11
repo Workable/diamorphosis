@@ -23,7 +23,7 @@ $ npm install env2conf
 ```javascript
 // file: config/env/production.json
 {
-  my_var_a : "some value"
+ "my_var_a" : "some value"
 }
 ```
 
