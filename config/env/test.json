@@ -1,0 +1,8 @@
+{
+  "from_test_json": {
+    "number": 1000.0,
+    "boolean": false,
+    "str": "test",
+    "array": ["a", "b", "c"]
+  }
+}
