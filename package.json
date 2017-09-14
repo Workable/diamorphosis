@@ -3,13 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "author": "",
-  "keywords": [
-    "config",
-    "json",
-    "env",
-    "NODE_ENV",
-    "twelve factor"
-  ],
+  "keywords": ["config", "json", "env", "NODE_ENV", "twelve factor"],
   "license": "MIT",
   "dependencies": {
     "deep-extend": "^0.4.1",
@@ -28,7 +22,7 @@
   "engines": {
     "node": "8.x.x"
   },
-  "main": "main.js",
+  "main": "lib/main.js",
   "scripts": {
     "precommit": "lint-staged",
     "pretest": "eslint .",
@@ -37,9 +31,6 @@
     "test-cov": "node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require should"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --print-width 120 --single-quote true --write",
-      "git add"
-    ]
+    "*.js": ["prettier --print-width 120 --single-quote true --write", "git add"]
   }
 }
