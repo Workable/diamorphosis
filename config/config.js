@@ -1,0 +1,28 @@
+module.exports = {
+  nested: {
+    number: 1.3,
+    boolean: true,
+    str: 'string',
+    array: [1, 2, 3]
+  },
+  from: {
+    dot_env: {
+      number: 0.0,
+      boolean: false,
+      str: 'string',
+      array: [1, 2, 3]
+    }
+  },
+  from_env: {
+    number: 0.0,
+    boolean: false,
+    str: 'string',
+    array: [1, 2, 3]
+  },
+  from_test_json: {
+    number: 0.0,
+    boolean: true,
+    str: 'string',
+    array: [1, 2, 3]
+  }
+};

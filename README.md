@@ -9,45 +9,25 @@ Supports defaults. Supports nested values.
 $ npm install env2conf
 ```
 
-## Features 
+## Features
 
-- Use a JSON file to configure your application for different NODE_ENV values (production, dev, etc...)
+- Use JSON or JS files to configure your application for different NODE_ENV values (production, dev, etc...)
 
-```
+```javascript
+// file: config/config.js
 {
-    development: {
-        my_var_a : "some value"
-    },
-    production: {
-        my_var_a : "some value"
-    }
+  my_var_a : "some value"
 }
 ```
 
-For seperate files per env:
-```
+```javascript
+// file: config/env/production.json
 {
-    development: require('./development')
-    production: require('./production')
+ "my_var_a" : "some value"
 }
 ```
 
-- Support for default values
 
-```
-{
-    default: {
-        my_var_a : "some value",
-        my_var_b: "some value"
-    },
-    development: {
-        my_var_a : "some value"
-    },
-    production: {
-        my_var_a : "some value"
-    }
-}
-```
 
 - Overwrite your application's config by using ENV variables and restarting the app. Supports scalar and array values.
 
@@ -56,39 +36,49 @@ export MY_VAR_A=someScalarValue
 export MY_VAR_B=this,var,is,an,array,of,values
 ```
 
+- Use .env file for development
+```
+  MY_VAR_A=someValue
+```
+
 ## Example
 
-```
-// file: configValues.js
+```javascript
+// file: config/config.js
 // var names should be snakecase (a_var_example) in order to be able to overwrite them correctly using env vars.
-module.exports = 
+module.exports =
 {
-    development: {
-        var_one: '1_dev_',
-        nested_example: {
-            var_two: '2_dev_'
-        }
-    },
-    production: {
-        var_one: '1_prod',
-        nested_example: {
-            var_two: '2_prod'
-        }
-    }
- },
+  var_one: '1_dev_',
+  nested_example: {
+    var_two: '2_dev_'
+}
 ```
 
+```javascript
+// file: config/evn/production.json
+{
+  "var_one"|: '1_prod',
+  "nested_example": {
+    "var_two": "2_prod"
+  }
+}
 ```
-// file: config.js
-const Env2conf = require('../env2conf');
-const configValues = require('./configValues.js')
-const env2conf = new Env2conf({config: configValues});
-module.exports = env2conf.getConfig();
+
+```javascript
+// file: app.js
+const env2conf = require('../env2conf');
+env2conf({ // these are the default values
+  configFolder: './config',
+  configPath: './config/config.js',
+  envFolder = './config/env',
+  loadDotEnv=['development']
+})
+
 ```
 
 ```
 // file: myFile.js
-const config = require('./config');
+const config = require('./config/config');
 console.log(var_one:', config.var_one);
 console.log(var_two:', config.nested_example.varTwo);
 
