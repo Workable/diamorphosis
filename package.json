@@ -1,15 +1,9 @@
 {
   "name": "env2conf",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "author": "",
-  "keywords": [
-    "config",
-    "json",
-    "env",
-    "NODE_ENV",
-    "twelve factor"
-  ],
+  "keywords": ["config", "json", "env", "NODE_ENV", "twelve factor"],
   "license": "MIT",
   "dependencies": {
     "deep-extend": "^0.4.1",
@@ -37,9 +31,6 @@
     "test-cov": "node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require should"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --print-width 120 --single-quote true --write",
-      "git add"
-    ]
+    "*.js": ["prettier --print-width 120 --single-quote true --write", "git add"]
   }
 }
