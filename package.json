@@ -32,7 +32,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "pretest": "eslint .",
-    "prepublish": "npm test",
+    "prepublishOnly": "npm test",
     "test": "mocha --require should --reporter spec",
     "test-cov": "node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require should"
   },
