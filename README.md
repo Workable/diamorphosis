@@ -16,14 +16,18 @@ $ npm install env2conf
 ```javascript
 // file: config/config.js
 {
-  my_var_a : "some value"
+  my_var_a : "some value",
+  myVarB: "some value"
 }
 ```
 
 ```javascript
 // file: config/env/production.json
 {
- "my_var_a" : "some value"
+  "nested":{
+    "my_var_a" : "some production value",
+    "myVarB": "some production value"
+  }
 }
 ```
 
@@ -32,13 +36,13 @@ $ npm install env2conf
 - Overwrite your application's config by using ENV variables and restarting the app. Supports scalar and array values.
 
 ```
-export MY_VAR_A=someScalarValue
-export MY_VAR_B=this,var,is,an,array,of,values
+export NESTED_MY_VAR_A=someScalarValue
+export NESTED_MY_VAR_B=this,var,is,an,array,of,values // NESTED_MYVARB is also supported
 ```
 
 - Use .env file for development
 ```
-  MY_VAR_A=someValue
+  NESTED_MY_VAR_A=someValue
 ```
 
 ## Example
@@ -48,18 +52,19 @@ export MY_VAR_B=this,var,is,an,array,of,values
 // var names should be snakecase (a_var_example) in order to be able to overwrite them correctly using env vars.
 module.exports =
 {
-  var_one: '1_dev_',
-  nested_example: {
-    var_two: '2_dev_'
+  varOne: '1_dev_',
+  nestedExample: {
+    varTwo: '2_dev_'
+  }
 }
 ```
 
 ```javascript
 // file: config/evn/production.json
 {
-  "var_one"|: '1_prod',
-  "nested_example": {
-    "var_two": "2_prod"
+  "varOne": '1_prod',
+  "nestedExample": {
+    "varTwo": "2_prod"
   }
 }
 ```

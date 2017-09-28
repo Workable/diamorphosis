@@ -3,6 +3,7 @@
     "number": 1000.0,
     "boolean": false,
     "str": "test",
-    "array": ["a", "b", "c"]
+    "array": ["a", "b", "c"],
+    "camelCase": "test"
   }
 }
