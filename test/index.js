@@ -8,7 +8,7 @@ scenarioFiles.forEach(filename => scenariosToRequire.push(`.\/scenarios\/${filen
 
 const scenarios = scenariosToRequire.map(scenario => require(scenario));
 
-function runSceanrio(scenario) {
+function runScenario(scenario) {
   if (typeof scenario.NODE_ENV === 'undefined') {
     delete process.env.NODE_ENV;
   } else {
@@ -20,10 +20,15 @@ function runSceanrio(scenario) {
       process.env[envVarKey.toUpperCase()] = scenario.env[envVarKey];
     });
   }
-  delete require.cache[require.resolve('../config/config')];
+  const [{ configPath = '../config/config' } = {}] = scenario.input;
+
+  delete require.cache[require.resolve(configPath)];
   config(...scenario.input);
 
-  let actual = require('../config/config');
+  let actual = require(configPath);
+  if (actual.default) {
+    actual = actual.default;
+  }
   const expected = scenario.expected;
 
   if (scenario.env) {
@@ -33,4 +38,4 @@ function runSceanrio(scenario) {
   should(actual).be.eql(expected);
 }
 
-describe('spec', () => scenarios.forEach(scenario => it(scenario.description, () => runSceanrio(scenario))));
+describe('spec', () => scenarios.forEach(scenario => it(scenario.description, () => runScenario(scenario))));

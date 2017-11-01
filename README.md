@@ -122,6 +122,23 @@ VAR_ONE=value
 - boolean
 - string
 
+## es6 support
+
+Config.js can use the es6 export default eg:
+
+```js
+export default {
+  varOne: '1_dev_',
+  nestedExample: {
+    varTwo: '2_dev_'
+  }
+}
+```
+
+This is especially usefull if you are using diamorphosis with typescript.
+
+Note that env files can have .json or .js extension
+
 ## License
 
   MIT
