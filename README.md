@@ -1,12 +1,17 @@
-# diamorfosis
+# diamorphosis
 
-Use JSON file(s), and/or ENV vars to configure your application for different environments (NODE_ENV).
+Use
+  - JSON file(s)
+  - .env file for development
+  - ENV vars
+
+to configure your application for different environments (NODE_ENV).
 Supports defaults. Supports nested values.
 
 ## Installation
 
 ```js
-$ npm install env2conf
+$ npm install diamorphosis
 ```
 
 ## Features
@@ -31,6 +36,8 @@ $ npm install env2conf
 }
 ```
 
+To enable the production configuration set NODE_ENV=production
+
 
 
 - Overwrite your application's config by using ENV variables and restarting the app. Supports scalar and array values.
@@ -38,6 +45,7 @@ $ npm install env2conf
 ```
 export NESTED_MY_VAR_A=someScalarValue
 export NESTED_MY_VAR_B=this,var,is,an,array,of,values // NESTED_MYVARB is also supported
+export NESTED_BOOLEAN=true
 ```
 
 - Use .env file for development
@@ -70,18 +78,28 @@ module.exports =
 ```
 
 ```javascript
+// file: config/evn/other.json
+{
+  "varOne": '1_other',
+  "nestedExample": {
+    "varTwo": "2_other"
+  }
+}
+```
+
+```javascript
 // file: app.js
-const env2conf = require('../env2conf');
-env2conf({ // these are the default values
+const diamorphosis = require('diamorphosis');
+diamorphosis({ // these are the default values
   configFolder: './config',
   configPath: './config/config.js',
   envFolder = './config/env',
-  loadDotEnv=['development']
+  loadDotEnv=['development'] // will only load .env if NODE_ENV=development
 })
 
 ```
 
-```
+```js
 // file: myFile.js
 const config = require('./config/config');
 console.log(var_one:', config.var_one);
@@ -92,13 +110,17 @@ console.log(var_two:', config.nested_example.varTwo);
 // export NESTED_EXAMPLE_VAR_TWO="some other value for var two"
 ```
 
-```
+```md
 # file .env
-# Used in development. Are overwritten by env
 
 VAR_ONE=value
 ```
 
+## Supported types
+
+- number
+- boolean
+- string
 
 ## License
 
