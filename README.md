@@ -1,4 +1,4 @@
-# env2Conf
+# diamorfosis
 
 Use JSON file(s), and/or ENV vars to configure your application for different environments (NODE_ENV).
 Supports defaults. Supports nested values.
@@ -90,6 +90,13 @@ console.log(var_two:', config.nested_example.varTwo);
 // Env vars can overwrite the config values. The app will need a restart to load the new values:
 // export VAR_ONE="some other value for var one"
 // export NESTED_EXAMPLE_VAR_TWO="some other value for var two"
+```
+
+```
+# file .env
+# Used in development. Are overwritten by env
+
+VAR_ONE=value
 ```
 
 
