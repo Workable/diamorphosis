@@ -135,7 +135,7 @@ export default {
 }
 ```
 
-This is especially usefull if you are using diamorphosis with typescript.
+This is especially useful if you are using diamorphosis with typescript.
 
 Note that env files can have .json or .js extension
 
