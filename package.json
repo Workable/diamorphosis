@@ -21,6 +21,7 @@
     "twelve factor"
   ],
   "license": "MIT",
+  "types": "./types/diamorphosis.d.ts",
   "dependencies": {
     "deep-extend": "^0.4.1",
     "dotenv": "^2.0.0"
