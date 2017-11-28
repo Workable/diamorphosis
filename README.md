@@ -93,8 +93,8 @@ const diamorphosis = require('diamorphosis');
 diamorphosis({ // these are the default values
   configFolder: './config',
   configPath: './config/config.js',
-  envFolder = './config/env',
-  loadDotEnv=['development'] // will only load .env if NODE_ENV=development
+  envFolder: './config/env',
+  loadDotEnv: ['development'] // will only load .env if NODE_ENV=development
 })
 
 ```
