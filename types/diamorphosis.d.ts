@@ -2,7 +2,7 @@ declare function diamorphosis(input: {
   configFolder?: string;
   configPath?: string;
   envFolder?: string;
-  loadDotEnv?: string;
+  loadDotEnv?: string[];
 }): void
 
 declare namespace diamorphosis {}
