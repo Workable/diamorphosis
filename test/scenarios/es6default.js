@@ -40,7 +40,8 @@ module.exports = {
       boolean: false,
       str: 'test',
       array: ['a', 'b', 'c'],
-      camelCase: 'test'
+      camelCase: 'test',
+      null: 'null'
     }
   }
 };

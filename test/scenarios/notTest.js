@@ -38,7 +38,8 @@ module.exports = {
       boolean: true,
       str: 'string',
       array: [1, 2, 3],
-      camelCase: 'camelCase'
+      camelCase: 'camelCase',
+      null: null
     }
   }
 };
