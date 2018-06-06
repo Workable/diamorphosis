@@ -7,7 +7,8 @@ module.exports = {
     FROM_ENV_BOOLEAN: true,
     FROM_ENV_STR: 'string',
     FROM_ENV_ARRAY: ['g', 'h', 'i'],
-    FROM_ENV_CAMELCASE: 'snake_case'
+    FROM_ENV_CAMELCASE: 'snake_case',
+    FROM_ENV_NESTED_CAMEL_CASE_NESTED: 'nested snake case'
   },
   expected: {
     nested: {
@@ -31,7 +32,10 @@ module.exports = {
       boolean: true,
       str: 'string',
       array: ['g', 'h', 'i'],
-      camelCase: 'snake_case'
+      camelCase: 'snake_case',
+      nestedCamelCase: {
+        nested: 'nested snake case'
+      }
     },
     from_test_json: {
       number: 1000.0,

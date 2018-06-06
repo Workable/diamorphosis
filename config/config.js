@@ -20,7 +20,10 @@ module.exports = {
     boolean: false,
     str: 'string',
     array: [1, 2, 3],
-    camelCase: 'camelCase'
+    camelCase: 'camelCase',
+    nestedCamelCase: {
+      nested: 'nestedCamelCase'
+    }
   },
   from_test_json: {
     number: 0.0,

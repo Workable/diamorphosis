@@ -33,7 +33,10 @@ module.exports = {
       boolean: true,
       str: 'string',
       array: ['g', 'h', 'i'],
-      camelCase: 'snake_case'
+      camelCase: 'snake_case',
+      nestedCamelCase: {
+        nested: 'nestedCamelCase'
+      }
     },
     from_test_json: {
       number: 1000.0,
