@@ -6,7 +6,7 @@ module.exports = {
     FROM_ENV_NUMBER: 2.0,
     FROM_ENV_BOOLEAN: true,
     FROM_ENV_STR: 'string',
-    FROM_ENV_ARRAY: ['g', 'h', 'i'],
+    FROM_ENV_ARRAY: 'g,h,i',
     FROM_ENV_ARRAY_TWO: '',
     FROM_ENV_CAMELCASE: 'snake_case',
     FROM_ENV_NESTED_CAMEL_CASE_NESTED: 'nested snake case'
