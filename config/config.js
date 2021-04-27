@@ -20,6 +20,7 @@ module.exports = {
     boolean: false,
     str: 'string',
     array: [1, 2, 3],
+    arrayTwo: [],
     camelCase: 'camelCase',
     nestedCamelCase: {
       nested: 'nestedCamelCase'
