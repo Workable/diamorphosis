@@ -34,6 +34,7 @@ module.exports = {
       str: 'string',
       array: ['g', 'h', 'i'],
       camelCase: 'snake_case',
+      arrayTwo: [],
       nestedCamelCase: {
         nested: 'nestedCamelCase'
       }
