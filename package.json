@@ -27,8 +27,8 @@
     "dotenv": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-workable-node": "git://github.com/Workable/eslint-config-workable-node.git#v1.0.0",
+    "eslint": "^8.32.0",
+    "eslint-config-workable-node": "git+https://github.com/Workable/eslint-config-workable-node.git#v1.0.0",
     "husky": "^0.13.4",
     "istanbul": "^0.4.5",
     "lint-staged": "^4.0.0",
