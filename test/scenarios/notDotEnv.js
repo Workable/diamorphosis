@@ -6,7 +6,6 @@ module.exports = {
     FROM_ENV_NUMBER: 2.0,
     FROM_ENV_BOOLEAN: true,
     FROM_ENV_STR: 'string',
-    FROM_ENV_ARRAY: ['g', 'h', 'i'],
     FROM_ENV_ARRAY: 'g,h,i',
     FROM_ENV_NUMBER_ARRAY: '4,5,6',
     FROM_ENV_BOOLEAN_ARRAY: 'false,true,false',
