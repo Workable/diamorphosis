@@ -4,6 +4,11 @@ module.exports = {
     boolean: true,
     str: 'string',
     array: [1, 2, 3],
+    numberArray: [1, 2, 3],
+    booleanArray: [true, false],
+    stringArray: ['a', 'b', 'c'],
+    //should be treated as string array
+    objectArray: [{}, {}],
     camelCase: 'camelCase'
   },
   from: {
@@ -12,6 +17,11 @@ module.exports = {
       boolean: false,
       str: 'string',
       array: [1, 2, 3],
+      numberArray: [1, 2, 3],
+      booleanArray: [true, false],
+      stringArray: ['a', 'b', 'c'],
+      //should be treated as string array
+      objectArray: [{}, {}],
       camelCase: 'camelCase'
     }
   },
@@ -21,6 +31,11 @@ module.exports = {
     str: 'string',
     array: [1, 2, 3],
     arrayTwo: [],
+    numberArray: [1, 2, 3],
+    booleanArray: [true, false],
+    stringArray: ['a', 'b', 'c'],
+    //should be treated as string array
+    objectArray: [{}, {}],
     camelCase: 'camelCase',
     nestedCamelCase: {
       nested: 'nestedCamelCase'
@@ -31,6 +46,11 @@ module.exports = {
     boolean: true,
     str: 'string',
     array: [1, 2, 3],
+    numberArray: [1, 2, 3],
+    booleanArray: [true, false],
+    stringArray: ['a', 'b', 'c'],
+    //should be treated as string array
+    objectArray: [{}, {}],
     camelCase: 'camelCase',
     null: null
   }

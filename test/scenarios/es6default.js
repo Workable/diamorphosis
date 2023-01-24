@@ -8,7 +8,11 @@ module.exports = {
     FROM_ENV_NUMBER: 2.0,
     FROM_ENV_BOOLEAN: true,
     FROM_ENV_STR: 'string',
-    FROM_ENV_ARRAY: ['g', 'h', 'i'],
+    FROM_ENV_ARRAY: 'g,h,i',
+    FROM_ENV_NUMBER_ARRAY: '4,5,6',
+    FROM_ENV_BOOLEAN_ARRAY: 'false,true,false',
+    FROM_ENV_STRING_ARRAY: 'c,d,e',
+    FROM_ENV_OBJECT_ARRAY: 'c,d,e',
     FROM_ENV_CAMEL_CASE: 'snake_case'
   },
   expected: {
@@ -17,6 +21,10 @@ module.exports = {
       boolean: true,
       str: 'string',
       array: [1, 2, 3],
+      numberArray: [1, 2, 3],
+      booleanArray: [true, false],
+      stringArray: ['a', 'b', 'c'],
+      objectArray: [{}, {}],
       camelCase: 'camelCase'
     },
     from: {
@@ -25,6 +33,10 @@ module.exports = {
         boolean: false,
         str: 'string',
         array: [1, 2, 3],
+        numberArray: [1, 2, 3],
+        booleanArray: [true, false],
+        stringArray: ['a', 'b', 'c'],
+        objectArray: [{}, {}],
         camelCase: 'camelCase'
       }
     },
@@ -35,6 +47,10 @@ module.exports = {
       array: ['g', 'h', 'i'],
       camelCase: 'snake_case',
       arrayTwo: [],
+      numberArray: [4, 5, 6],
+      booleanArray: [false, true, false],
+      stringArray: ['c', 'd', 'e'],
+      objectArray: ['c', 'd', 'e'],
       nestedCamelCase: {
         nested: 'nestedCamelCase'
       }
@@ -44,6 +60,10 @@ module.exports = {
       boolean: false,
       str: 'test',
       array: ['a', 'b', 'c'],
+      numberArray: [3, 4, 5],
+      booleanArray: [false, true, false],
+      stringArray: ['d', 'e', 'f'],
+      objectArray: ['1'],
       camelCase: 'test',
       null: 'null'
     }

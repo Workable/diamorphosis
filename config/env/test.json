@@ -4,6 +4,10 @@
     "boolean": false,
     "str": "test",
     "array": ["a", "b", "c"],
+    "numberArray": [3, 4, 5],
+    "booleanArray": [false, true, false],
+    "stringArray": ["d", "e", "f"],
+    "objectArray": ["1"],
     "camelCase": "test",
     "null": "null"
   }
