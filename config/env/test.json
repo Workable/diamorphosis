@@ -9,6 +9,7 @@
     "stringArray": ["d", "e", "f"],
     "objectArray": ["1"],
     "camelCase": "test",
-    "null": "null"
+    "null": "null",
+    "with.dot": "from_test_json"
   }
 }

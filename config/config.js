@@ -9,7 +9,8 @@ module.exports = {
     stringArray: ['a', 'b', 'c'],
     //should be treated as string array
     objectArray: [{}, {}],
-    camelCase: 'camelCase'
+    camelCase: 'camelCase',
+    'with.dot': 'with.dot'
   },
   from: {
     dot_env: {
@@ -22,7 +23,8 @@ module.exports = {
       stringArray: ['a', 'b', 'c'],
       //should be treated as string array
       objectArray: [{}, {}],
-      camelCase: 'camelCase'
+      camelCase: 'camelCase',
+      'with.dot': 'with.dot'
     }
   },
   from_env: {
@@ -39,7 +41,8 @@ module.exports = {
     camelCase: 'camelCase',
     nestedCamelCase: {
       nested: 'nestedCamelCase'
-    }
+    },
+    'with.dot': 'with.dot'
   },
   from_test_json: {
     number: 0.0,
@@ -52,6 +55,7 @@ module.exports = {
     //should be treated as string array
     objectArray: [{}, {}],
     camelCase: 'camelCase',
-    null: null
+    null: null,
+    'with.dot': 'with.dot'
   }
 };

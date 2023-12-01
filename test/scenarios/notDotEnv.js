@@ -12,7 +12,8 @@ module.exports = {
     FROM_ENV_STRING_ARRAY: 'c,d,e',
     FROM_ENV_OBJECT_ARRAY: 'c,d,e',
     FROM_ENV_CAMEL_CASE: 'snake_case',
-    FROM_ENV_NESTEDCAMELCASE_NESTED: 'nested snake case'
+    FROM_ENV_NESTEDCAMELCASE_NESTED: 'nested snake case',
+    FROM_ENV_WITH_DOT: 'WITH_DOT'
   },
   expected: {
     nested: {
@@ -24,7 +25,8 @@ module.exports = {
       booleanArray: [true, false],
       stringArray: ['a', 'b', 'c'],
       objectArray: [{}, {}],
-      camelCase: 'camelCase'
+      camelCase: 'camelCase',
+      'with.dot': 'with.dot'
     },
     from: {
       dot_env: {
@@ -36,7 +38,8 @@ module.exports = {
         booleanArray: [true, false],
         stringArray: ['a', 'b', 'c'],
         objectArray: [{}, {}],
-        camelCase: 'camelCase'
+        camelCase: 'camelCase',
+        'with.dot': 'with.dot'
       }
     },
     from_env: {
@@ -52,7 +55,8 @@ module.exports = {
       objectArray: ['c', 'd', 'e'],
       nestedCamelCase: {
         nested: 'nested snake case'
-      }
+      },
+      'with.dot': 'WITH_DOT'
     },
     from_test_json: {
       number: 1000.0,
@@ -64,7 +68,8 @@ module.exports = {
       stringArray: ['d', 'e', 'f'],
       objectArray: ['1'],
       camelCase: 'test',
-      null: 'null'
+      null: 'null',
+      'with.dot': 'from_test_json'
     }
   }
 };
