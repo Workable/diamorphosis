@@ -10,7 +10,9 @@ module.exports = {
     //should be treated as string array
     objectArray: [{}, {}],
     camelCase: 'camelCase',
-    'with.dot': 'with.dot'
+    'with.dot': 'with.dot',
+    regex: new RegExp('some-regex.*'),
+    regexWithFlags: new RegExp('some-regex-with-flags.*', 'gi')
   },
   from: {
     dot_env: {
@@ -24,7 +26,9 @@ module.exports = {
       //should be treated as string array
       objectArray: [{}, {}],
       camelCase: 'camelCase',
-      'with.dot': 'with.dot'
+      'with.dot': 'with.dot',
+      regex: new RegExp('some-regex.*'),
+      regexWithFlags: new RegExp('some-regex-with-flags.*', 'gi')
     }
   },
   from_env: {
@@ -42,7 +46,9 @@ module.exports = {
     nestedCamelCase: {
       nested: 'nestedCamelCase'
     },
-    'with.dot': 'with.dot'
+    'with.dot': 'with.dot',
+    regex: new RegExp('some-regex.*'),
+    regexWithFlags: new RegExp('some-regex-with-flags.*', 'gi')
   },
   from_test_json: {
     number: 0.0,
@@ -56,6 +62,8 @@ module.exports = {
     objectArray: [{}, {}],
     camelCase: 'camelCase',
     null: null,
-    'with.dot': 'with.dot'
+    'with.dot': 'with.dot',
+    regex: new RegExp('some-regex.*'),
+    regexWithFlags: new RegExp('some-regex-with-flags.*', 'gi')
   }
 };

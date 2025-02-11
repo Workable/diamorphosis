@@ -10,6 +10,8 @@
     "objectArray": ["1"],
     "camelCase": "test",
     "null": "null",
-    "with.dot": "from_test_json"
+    "with.dot": "from_test_json",
+    "regex": "some-regex-from-test-json.*",
+    "regexWithFlags": "/some-regex-with-flags-from-test-json.*/i"
   }
 }
