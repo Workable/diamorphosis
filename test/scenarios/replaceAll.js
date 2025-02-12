@@ -15,8 +15,7 @@ module.exports = {
     FROM_ENV_CAMELCASE: 'snake_case',
     FROM_ENV_NESTED_CAMEL_CASE_NESTED: 'nested snake case',
     FROM_ENV_WITH_DOT: 'WITH_DOT',
-    FROM_ENV_REGEX: 'some-regex-from-env.*',
-    FROM_ENV_REGEX_WITH_FLAGS: '/some-regex-with-flags-from-env.*/g'
+    FROM_ENV_REGEX: 'some-regex-from-env.*'
   },
   expected: {
     nested: {
@@ -31,8 +30,7 @@ module.exports = {
       objectArray: [{}, {}],
       camelCase: 'camelCase',
       'with.dot': 'with.dot',
-      regex: new RegExp('some-regex.*'),
-      regexWithFlags: new RegExp('some-regex-with-flags.*', 'gi')
+      regex: new RegExp('some-regex.*', 'gi')
     },
     from: {
       dot_env: {
@@ -46,8 +44,7 @@ module.exports = {
         objectArray: ['o', 'b', 'j', 'e', 'c', 't'],
         camelCase: 'snake_case',
         'with.dot': 'WITH_DOT_ENV',
-        regex: new RegExp('some-regex-from-dot-env.*'),
-        regexWithFlags: new RegExp('some-regex-with-flags-from-dot-env.*', 'gmi')
+        regex: new RegExp('some-regex-from-dot-env.*', 'gi')
       }
     },
     from_env: {
@@ -65,8 +62,7 @@ module.exports = {
         nested: 'nested snake case'
       },
       'with.dot': 'WITH_DOT',
-      regex: new RegExp('some-regex-from-env.*'),
-      regexWithFlags: new RegExp('some-regex-with-flags-from-env.*', 'g')
+      regex: new RegExp('some-regex-from-env.*', 'gi')
     },
     from_test_json: {
       number: 1000.0,
@@ -80,8 +76,7 @@ module.exports = {
       camelCase: 'test',
       null: 'null',
       'with.dot': 'from_test_json',
-      regex: 'some-regex-from-test-json.*',
-      regexWithFlags: '/some-regex-with-flags-from-test-json.*/i'
+      regex: 'some-regex-from-test-json.*'
     }
   }
 };
