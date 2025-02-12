@@ -13,7 +13,8 @@ module.exports = {
     FROM_ENV_OBJECT_ARRAY: 'c,d,e',
     FROM_ENV_CAMELCASE: 'snake_case',
     FROM_ENV_NESTEDCAMELCASE_NESTED: 'nested snake case',
-    FROM_ENV_WITH_DOT: 'WITH_DOT'
+    FROM_ENV_WITH_DOT: 'WITH_DOT',
+    FROM_ENV_REGEX: 'some-regex-from-env.*'
   },
   expected: {
     nested: {
@@ -27,7 +28,8 @@ module.exports = {
       //should be treated as string array
       objectArray: [{}, {}],
       camelCase: 'camelCase',
-      'with.dot': 'with.dot'
+      'with.dot': 'with.dot',
+      regex: new RegExp('some-regex.*', 'gi')
     },
     from: {
       dot_env: {
@@ -40,7 +42,8 @@ module.exports = {
         stringArray: ['a', 'b', 'c'],
         objectArray: ['o', 'b', 'j', 'e', 'c', 't'],
         camelCase: 'snake_case',
-        'with.dot': 'WITH_DOT_ENV'
+        'with.dot': 'WITH_DOT_ENV',
+        regex: new RegExp('some-regex-from-dot-env.*', 'gi')
       }
     },
     from_env: {
@@ -57,7 +60,8 @@ module.exports = {
       nestedCamelCase: {
         nested: 'nested snake case'
       },
-      'with.dot': 'WITH_DOT'
+      'with.dot': 'WITH_DOT',
+      regex: new RegExp('some-regex-from-env.*', 'gi')
     },
     from_test_json: {
       number: 0.0,
@@ -70,7 +74,8 @@ module.exports = {
       objectArray: [{}, {}],
       camelCase: 'camelCase',
       null: null,
-      'with.dot': 'with.dot'
+      'with.dot': 'with.dot',
+      regex: new RegExp('some-regex.*', 'gi')
     }
   }
 };
